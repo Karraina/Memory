@@ -83,7 +83,7 @@ int main() {
 
 	if (sensorPtr != nullptr) {
 		cout << "CPU sensor Connected\n";
-		cout << "Current Reading: " << *sensorPtr << " C\n";
+		cout << "Current Reading: " << *sensorPtr << endl;
 	}
 
 	return 0;
