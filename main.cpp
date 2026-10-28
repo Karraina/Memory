@@ -159,7 +159,7 @@ int main() {
 
 	int temperatures[5] = { 62, 65, 68, 72, 74 };
 
-	int* tempHistoryPtr = temperatures;
+	int* tempHPtr = temperatures;
 
 	cout << "Temperature Reading:\n";
 
@@ -175,11 +175,11 @@ int main() {
 
         cout << "\nPointer Arithmetic:\n";
 
-        cout << "First Reading: " << *tempHistoryPtr << endl;
+        cout << "First Reading: " << *tempHPtr << endl;
 
-        cout << "Second Reading: " << *(tempHistoryPtr + 1) << endl;
+        cout << "Second Reading: " << *(tempHPtr + 1) << endl;
 
-        cout << "Third Reading: " << *(tempHistoryPtr + 2) << endl;
+        cout << "Third Reading: " << *(tempHPtr + 2) << endl;
 
 	return 0;
 }
