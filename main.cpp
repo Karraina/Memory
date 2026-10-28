@@ -2,6 +2,21 @@
 
 using namespace std;
 
+void increase_temp(int* temperature, int amount) {
+	if (temperature != nullptr) {
+		*temperature += amount;
+	}
+}
+
+void display_temp(const int* temperature) {
+	if (temperature != nullptr) {
+		cout << "Current Temperature: " << *temperature << endl;
+	}
+	else {
+		cout << "No Temperature Sensor Availiable.\n";
+	}
+}
+
 int main() {
 
 	cout << "MEMORY EXPLORER\n";
@@ -85,6 +100,86 @@ int main() {
 		cout << "CPU sensor Connected\n";
 		cout << "Current Reading: " << *sensorPtr << endl;
 	}
+
+	cout << "\nPART 6: SWITCHING SENSORS\n\n";
+
+	cout << "Active Sensor: CPU\n";
+	cout << "Reading: " << *sensorPtr << endl;
+
+	sensorPtr = &gpuTemp;
+
+	cout << "\nActive Sensor: GPU\n";
+	cout << "Reading: " << *sensorPtr << endl;
+
+	*sensorPtr = 65;
+
+	cout << "Updated GPU Temperature: " << gpuTemp << endl;
+
+	cout << "CPU Temperature: " << cpuTemp << endl;
+
+	cout << "\nPART 7: POINTERS VS REFERENCES\n\n";
+
+	int& cpuRef = cpuTemp;
+
+	int* currentPtr = &cpuTemp;
+
+	cout << "CPU Tempeture: " << cpuTemp << endl;
+	cout << "Reference Value: " << cpuRef << endl;
+	cout << "Pointer Value: " << *currentPtr << endl;
+
+	cpuRef = 82;
+
+	cout << "After Using The Reference:\n";
+	cout << "CPU Temperature: " << cpuTemp << endl;
+
+	*currentPtr = 85;
+
+	cout << "After Using The Pointer:\n";
+	cout << "CPU Temperature: " << cpuTemp << endl;
+
+	cout << "\nPART 8: POINTER FUNCTION PARAMERERS\n\n";
+
+	cout << "Before CPU Update: ";
+	display_temp(&cpuTemp);
+
+	increase_temp(&cpuTemp, 5);
+
+	cout << "After CPU Update: ";
+	display_temp(&cpuTemp);
+
+	increase_temp(&gpuTemp, 10);
+
+	cout << "Update GPU: ";
+        display_temp(&gpuTemp);
+
+        cout << "Unavailable Sensor: ";
+        display_temp(nullptr);
+
+        cout << "\nPART 9: TEMPERATURE HISTORY\n\n";
+
+	int temperatures[5] = { 62, 65, 68, 72, 74 };
+
+	int* tempHistoryPtr = temperatures;
+
+	cout << "Temperature Reading:\n";
+
+	for(int i = 0; i < 5; i++) {
+		cout << "Reading " << i + 1 << ": " << temperatures[i] << endl;
+	}
+
+	cout << "\nMemory Address:\n";
+
+	for(int i = 0; i < 5; i++) {
+                cout << "Reading " << i + 1 << " Address: " << temperatures[i] << endl;
+        }
+
+        cout << "\nPointer Arithmetic:\n";
+
+        cout << "First Reading: " << *tempHistoryPtr << endl;
+
+        cout << "Second Reading: " << *(tempHistoryPtr + 1) << endl;
+
+        cout << "Third Reading: " << *(tempHistoryPtr + 2) << endl;
 
 	return 0;
 }
