@@ -170,7 +170,7 @@ int main() {
 	cout << "\nMemory Address:\n";
 
 	for(int i = 0; i < 5; i++) {
-                cout << "Reading " << i + 1 << " Address: " << temperatures[i] << endl;
+                cout << "Reading " << i + 1 << " Address: " << &temperatures[i] << endl;
         }
 
         cout << "\nPointer Arithmetic:\n";
